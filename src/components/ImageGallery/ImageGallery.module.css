@@ -1,0 +1,25 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Відстань між картинками */
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.galleryItem {
+  flex-basis: calc(25% - 16px); /* 4 картинки в рядку з урахуванням відстані між ними */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .galleryItem {
+    flex-basis: calc(50% - 16px); /* 2 картинки в рядку для менших екранів */
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryItem {
+    flex-basis: calc(100% - 16px); /* 1 картинка в рядку для мобільних пристроїв */
+  }
+}
