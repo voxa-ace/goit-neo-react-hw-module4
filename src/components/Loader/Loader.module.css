@@ -1,5 +1,52 @@
-.loader {
+/* LoadMoreBtn.module.css */
+.button {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 12px;
+  background-color: #1a1a1a; /* Колір фону */
+  color: #ffffff; /* Колір тексту */
+  border: none;
+  border-radius: 8px; /* Округлені кути */
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:disabled {
+  background-color: #333; /* Колір фону при дизактивації */
+  cursor: not-allowed; /* Змінює курсор при дизактивації */
+}
+
+.button:hover {
+  background-color: #646cff; /* Колір фону при наведенні */
+  transform: scale(1.05); /* Легке збільшення при наведенні */
+}
+
+.button:focus {
+  outline: 2px solid #646cff; /* Колір обведення при фокусі */
+  outline-offset: 2px; /* Відстань між обведенням і кнопкою */
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Легке затемнення */
+  border-radius: 50%;
+  border-top: 4px solid #ffffff; /* Колір верхньої частини */
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

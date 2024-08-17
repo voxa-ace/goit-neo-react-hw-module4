@@ -1,21 +1,40 @@
-import React from 'react';
-import ReactModal from 'react-modal';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './ImageModal.module.css';
 
-export default function ImageModal({ image, onClose }) {
-  return (
-    <ReactModal
-      isOpen={!!image}
-      onRequestClose={onClose}
-      contentLabel="Image Modal"
-      className={styles.modal}
-      overlayClassName={styles.overlay}
-      ariaHideApp={false}
-    >
-      <div className={styles.content}>
-        <img src={image.urls.regular} alt={image.alt_description} className={styles.image} />
-        <button onClick={onClose} className={styles.closeButton}>Close</button>
+const ImageModal = ({ isOpen, image, onClose }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  return ReactDOM.createPortal(
+    <div className={styles.overlay} onClick={handleOverlayClick}>
+      <div className={styles.modal}>
+        <img src={image.urls.regular} alt={image.alt_description} />
       </div>
-    </ReactModal>
+    </div>,
+    document.body
   );
-}
+};
+
+export default ImageModal;

@@ -1,34 +1,54 @@
-.searchBar {
-  padding: 20px;
-  text-align: center;
-}
+/* SearchBar.module.css */
 
-.form {
+/* Стилі для заголовка форми */
+.header {
   display: flex;
   justify-content: center;
-  align-items: center;
-  max-width: 500px;
-  margin: 0 auto;
+  margin: 1rem 0; /* Додано верхній і нижній маргін */
 }
 
+/* Стилі для форми */
+.form {
+  display: flex;
+  width: 100%;
+  max-width: 800px; /* Збільшено ширину */
+  background-color: #fff; /* Білий фон для форми */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь для кращого вигляду */
+}
+
+/* Стилі для інпуту */
 .input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 8px; /* Відступ між полем вводу та кнопкою */
-  box-sizing: border-box;
+  flex: 1; /* Розширення інпуту, щоб займати всю доступну ширину */
+  padding: 10px 15px;
+  border: 1px solid #ddd; /* Легкий сірий бордер */
+  border-radius: 8px 0 0 8px; /* Округлення лівих країв */
+  font-size: 1rem; /* Стандартний розмір шрифту */
+  font-family: inherit;
+  color: #333; /* Темно-сірий текст */
+  outline: none;
+  transition: font-size 0.2s ease; /* Перехід для плавного збільшення шрифту */
 }
 
+/* Збільшення розміру шрифту при фокусі */
+.input:focus {
+  border-color: #003366; /* Синій бордер при фокусі */
+  font-size: 1.2rem; /* Збільшений розмір шрифту при фокусі */
+}
+
+/* Стилі для кнопки */
 .button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 20px;
+  background-color: #003366; /* Темно-синій фон для кнопки */
   border: none;
-  border-radius: 4px;
+  border-radius: 0 8px 8px 0; /* Округлення правих країв */
+  color: #fff; /* Білий текст */
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s; /* М'який перехід для фону */
 }
 
+/* Зміна фону кнопки при наведенні */
 .button:hover {
-  background-color: #0056b3;
+  background-color: #002244; /* Темніший синій фон при наведенні */
 }

@@ -1,10 +1,13 @@
 import React from 'react';
+import Loader from '../Loader/Loader'; // Імпортуйте ваш компонент Loader
 import styles from './LoadMoreBtn.module.css';
 
-export default function LoadMoreBtn({ onClick }) {
+const LoadMoreBtn = ({ onClick, loading }) => {
   return (
-    <button onClick={onClick} className={styles.button}>
-      Load more
+    <button className={styles.button} onClick={onClick} disabled={loading}>
+      {loading ? <Loader /> : 'Load More'}
     </button>
   );
-}
+};
+
+export default LoadMoreBtn;
