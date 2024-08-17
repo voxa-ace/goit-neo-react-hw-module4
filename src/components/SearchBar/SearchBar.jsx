@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import toast from 'react-hot-toast';
 import styles from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-  const [error, setError] = useState('');
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
-    if (e.target.value.trim() !== '') {
-      setError('');  // Clear error if input is not empty
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim() === '') {
-      setError('Input field must be filled.'); // Show error if input is empty
+      toast.error('Введіть текст для пошуку!');
       return;
     }
     onSubmit(query);
+    setQuery(''); 
   };
 
   return (
@@ -36,7 +33,6 @@ const SearchBar = ({ onSubmit }) => {
         />
         <button className={styles.button} type="submit">Search</button>
       </form>
-      {error && <ErrorMessage message={error} />} {/* Error message now below the form */}
     </header>
   );
 };

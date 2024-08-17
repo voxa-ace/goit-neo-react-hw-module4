@@ -17,17 +17,20 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [noResults, setNoResults] = useState(false); 
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [page, setPage] = useState(1);
-  const [loadingMore, setLoadingMore] = useState(false); 
+  const [loadingMore, setLoadingMore] = useState(false);
 
   useEffect(() => {
     if (!query) return;
 
-    setLoading(true);
-
     const fetchImages = async () => {
+      setLoading(true);
+      setLoadingMore(false);
+      setNoResults(false); 
+
       try {
         const response = await axios.get('https://api.unsplash.com/search/photos', {
           params: {
@@ -40,12 +43,25 @@ const App = () => {
           },
         });
 
-        setImages((prevImages) => [...prevImages, ...response.data.results]);
+        if (response.data.results.length === 0) {
+          setNoResults(true); 
+          if (page === 1) {
+            setImages([]); 
+          }
+        } else {
+          if (page === 1) {
+            setImages(response.data.results); 
+          } else {
+            setImages((prevImages) => [...prevImages, ...response.data.results]); 
+          }
+        }
       } catch (err) {
         console.error('Fetch error:', err);
         setError(err);
+        setImages([]); 
       } finally {
         setLoading(false);
+        setLoadingMore(false);
       }
     };
 
@@ -54,9 +70,10 @@ const App = () => {
 
   const handleSearchSubmit = (query) => {
     setQuery(query);
-    setImages([]);
-    setPage(1);
-    setError(null);
+    setPage(1); 
+    setImages([]); 
+    setError(null); 
+    setNoResults(false);
   };
 
   const handleImageClick = (image) => {
@@ -71,11 +88,12 @@ const App = () => {
     setSelectedImage(null);
   };
 
-  const handleLoadMore = async () => {
+  const handleLoadMore = () => {
     setLoadingMore(true); 
-    setPage((prevPage) => prevPage + 1);
-    setLoadingMore(false); 
+    setPage((prevPage) => prevPage + 1); 
   };
+
+  const shouldShowLoadMore = !loading && !error && images.length > 0 && !noResults;
 
   return (
     <div className="appContainer">
@@ -83,10 +101,13 @@ const App = () => {
         <h1>Image Gallery</h1>
       </header>
       <SearchBar onSubmit={handleSearchSubmit} />
-      {error && <ErrorMessage />}
-      {loading && <Loader />}
-      {images.length > 0 && <ImageGallery images={images} onImageClick={handleImageClick} />}
-      {images.length > 0 && !loading && !error && <LoadMoreBtn onClick={handleLoadMore} loading={loadingMore} />}
+      {error && !loading && <ErrorMessage />} 
+      {noResults && !loading && <p className="noResultsMessage">No results found for "{query}". Please try a different search term.</p>}
+      {images.length > 0 && !error && <ImageGallery images={images} onImageClick={handleImageClick} />}
+      {loading && !noResults && <Loader />} 
+      {shouldShowLoadMore && (
+        <LoadMoreBtn onClick={handleLoadMore} loading={loadingMore} />
+      )}
       <ImageModal isOpen={isModalOpen} image={selectedImage} onClose={handleCloseModal} />
       <Toaster />
     </div>

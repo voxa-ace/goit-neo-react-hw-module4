@@ -1,11 +1,14 @@
 import React from 'react';
-import Loader from '../Loader/Loader'; 
 import styles from './LoadMoreBtn.module.css';
 
 const LoadMoreBtn = ({ onClick, loading }) => {
   return (
-    <button className={styles.button} onClick={onClick} disabled={loading}>
-      {loading ? <Loader /> : 'Load More'}
+    <button
+      className={styles.button}
+      onClick={onClick}
+      disabled={loading}
+    >
+      {loading ? 'Loading...' : 'Load More'}
     </button>
   );
 };
