@@ -1,8 +1,7 @@
-/* ImageGallery.module.css */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 стовпці */
-  gap: 16px; /* Відстань між картинками */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -11,11 +10,11 @@
 .imageItem {
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 1 / 1; /* Зберігає співвідношення сторін */
+  aspect-ratio: 1 / 1;
 }
 
 .imageItem img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Обрізає зображення так, щоб воно заповнювало контейнер */
+  object-fit: cover;
 }

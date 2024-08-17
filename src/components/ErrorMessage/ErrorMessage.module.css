@@ -1,8 +1,9 @@
-/* ErrorMessage.module.css */
-
 .error {
   color: red;
-  text-align: center;
-  padding: 20px;
-  font-size: 18px;
+  margin-top: 0.5rem;
+  font-size: 1.0rem;
+  text-align: left; 
+  width: 100%;
+  padding-left: 10px; 
+  max-width: 800px;
 }

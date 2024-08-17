@@ -1,54 +1,48 @@
-/* SearchBar.module.css */
-
-/* Стилі для заголовка форми */
 .header {
   display: flex;
-  justify-content: center;
-  margin: 1rem 0; /* Додано верхній і нижній маргін */
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
 }
 
-/* Стилі для форми */
 .form {
   display: flex;
   width: 100%;
-  max-width: 800px; /* Збільшено ширину */
-  background-color: #fff; /* Білий фон для форми */
+  max-width: 800px;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь для кращого вигляду */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem; 
 }
 
-/* Стилі для інпуту */
 .input {
-  flex: 1; /* Розширення інпуту, щоб займати всю доступну ширину */
+  flex: 1;
   padding: 10px 15px;
-  border: 1px solid #ddd; /* Легкий сірий бордер */
-  border-radius: 8px 0 0 8px; /* Округлення лівих країв */
-  font-size: 1rem; /* Стандартний розмір шрифту */
+  border: 1px solid #ddd;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
   font-family: inherit;
-  color: #333; /* Темно-сірий текст */
+  color: #333;
   outline: none;
-  transition: font-size 0.2s ease; /* Перехід для плавного збільшення шрифту */
+  transition: font-size 0.2s ease;
 }
 
-/* Збільшення розміру шрифту при фокусі */
 .input:focus {
-  border-color: #003366; /* Синій бордер при фокусі */
-  font-size: 1.2rem; /* Збільшений розмір шрифту при фокусі */
+  border-color: #003366;
+  font-size: 1.2rem;
 }
 
-/* Стилі для кнопки */
 .button {
   padding: 10px 20px;
-  background-color: #003366; /* Темно-синій фон для кнопки */
+  background-color: #003366;
   border: none;
-  border-radius: 0 8px 8px 0; /* Округлення правих країв */
-  color: #fff; /* Білий текст */
+  border-radius: 0 8px 8px 0;
+  color: #fff;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s; /* М'який перехід для фону */
+  transition: background-color 0.3s;
 }
 
-/* Зміна фону кнопки при наведенні */
 .button:hover {
-  background-color: #002244; /* Темніший синій фон при наведенні */
+  background-color: #002244;
 }

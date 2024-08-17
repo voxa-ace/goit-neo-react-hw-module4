@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../Loader/Loader'; // Імпортуйте ваш компонент Loader
+import Loader from '../Loader/Loader'; 
 import styles from './LoadMoreBtn.module.css';
 
 const LoadMoreBtn = ({ onClick, loading }) => {

@@ -20,7 +20,7 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [page, setPage] = useState(1);
-  const [loadingMore, setLoadingMore] = useState(false); // Додано стан для завантаження
+  const [loadingMore, setLoadingMore] = useState(false); 
 
   useEffect(() => {
     if (!query) return;
@@ -72,9 +72,9 @@ const App = () => {
   };
 
   const handleLoadMore = async () => {
-    setLoadingMore(true); // Почати завантаження
+    setLoadingMore(true); 
     setPage((prevPage) => prevPage + 1);
-    setLoadingMore(false); // Завантаження завершено
+    setLoadingMore(false); 
   };
 
   return (

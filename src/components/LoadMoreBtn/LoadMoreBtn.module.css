@@ -1,14 +1,16 @@
 /* LoadMoreBtn.module.css */
 .button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 200px;
   margin: 20px auto;
   padding: 12px;
-  background-color: #1a1a1a; /* Колір фону */
-  color: #ffffff; /* Колір тексту */
+  background-color: #1a1a1a; 
+  color: #ffffff;
   border: none;
-  border-radius: 8px; /* Округлені кути */
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1em;
   font-weight: 500;
@@ -16,12 +18,17 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.button:disabled {
+  background-color: #333;
+  cursor: not-allowed; 
+}
+
 .button:hover {
-  background-color: #646cff; /* Колір фону при наведенні */
-  transform: scale(1.05); /* Легке збільшення при наведенні */
+  background-color: #646cff;
+  transform: scale(1.05);
 }
 
 .button:focus {
-  outline: 2px solid #646cff; /* Колір обведення при фокусі */
-  outline-offset: 2px; /* Відстань між обведенням і кнопкою */
+  outline: 2px solid #646cff; 
+  outline-offset: 2px; 
 }
