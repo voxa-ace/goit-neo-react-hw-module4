@@ -97,7 +97,7 @@ const App = () => {
       {images.length > 0 && !error && <ImageGallery images={images} onImageClick={handleImageClick} />}
       {loading && !noResults && <Loader />}
       {shouldShowLoadMore && <LoadMoreBtn onClick={handleLoadMore} loading={loadingMore} />}
-      {selectedImage && <ImageModal isOpen={isModalOpen} image={selectedImage} onClose={handleCloseModal} />}
+      {<ImageModal isOpen={isModalOpen} image={selectedImage} onClose={handleCloseModal} />}
       <Toaster />
     </div>
   );
