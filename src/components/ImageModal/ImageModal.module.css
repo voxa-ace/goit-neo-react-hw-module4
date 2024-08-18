@@ -2,28 +2,33 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1100;
 }
 
 .modal {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  background-color: #000;
+  background: rgb(87, 84, 78);
+  padding: 4px; 
   border-radius: 8px;
+  outline: none;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
 }
 
-.modal img {
-  width: 100%;
+.image {
+  border-radius: 4px;
+  max-width: 100%;
+  max-height: 80vh;
   height: auto;
-  max-height: 90vh;
+  width: auto;
   object-fit: contain;
-  display: block;
 }
+

@@ -5,18 +5,23 @@ import styles from './SearchBar.module.css';
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
+  // Обробка зміни значення в input
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
 
+  // Обробка сабміту форми
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim() === '') {
+    const trimmedQuery = query.trim();
+
+    if (!trimmedQuery) {
       toast.error('Please enter a search term!');
       return;
     }
-    onSubmit(query);
-    setQuery(''); 
+
+    onSubmit(trimmedQuery);
+    setQuery('');
   };
 
   return (
@@ -31,7 +36,9 @@ const SearchBar = ({ onSubmit }) => {
           autoComplete="off"
           autoFocus
         />
-        <button className={styles.button} type="submit">Search</button>
+        <button className={styles.button} type="submit">
+          Search
+        </button>
       </form>
     </header>
   );
